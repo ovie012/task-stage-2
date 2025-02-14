@@ -19,12 +19,12 @@ function AttendeeDetail() {
               <div>
                 <label>Enter your name *</label>
                 <input type="text" ref={inputRef.name} />
-                {error.name && <p className='error'>{error.nameErrorText}</p>}
+                {error.name && <p className='error error-two'>{error.nameErrorText}</p>}
               </div>
               <div>
                 <label>Enter your email *</label>
                 <input type="text" ref={inputRef.email} placeholder='📧 hello@avioflagos.io' />
-                {error.email && <p className='error'>{error.emailErrorText}</p>}
+                {error.email && <p className='error error-two'>{error.emailErrorText}</p>}
               </div>
               <label>Special Request ?</label>
               <textarea type="text" ref={inputRef.freeWill} />

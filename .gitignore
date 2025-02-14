@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+.ini
+
+# Environment variables (add this to ignore sensitive API keys)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local

@@ -117,6 +117,26 @@ a.active {
   }
 }
 
+@media only screen and (max-width: 800px ) {
+  .header {
+    width: 95%;
+  }
+
+  .header section {
+    gap: 15px;
+  }
+
+  .header button {
+    width: 145px;
+    height: 48px;
+    font-size: 0.85rem;
+  }
+
+  .body {
+    width: 95%;
+  }
+}
+
 .event-page-constant section {
   display: flex;
   align-items: center;
@@ -393,6 +413,12 @@ a.active {
   margin-top: 30px;
 }
 
+.uploaded {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
 .attendee-detail form {
   width: 100%;
 }
@@ -502,12 +528,12 @@ a.active {
   border-radius: 12px;
   border: 5px solid #24a1b780;
   margin: 10px 0;
+  overflow: hidden;
 }
 
 .img-container img {
   width: 100%;
   height: 100%;
-  overflow: hidden;
   border: none;
 }
 
@@ -563,4 +589,164 @@ a.active {
 .bar-code img {
   width: 100%;
   height: 100%;
+}
+
+@media only screen and (max-width: 500px) {
+  .header section {
+    display: none;
+  }
+
+  .event-page-constant section h2 {
+    font-size: 1.2rem;
+  }
+
+  .event-page-constant section {
+    font-size: 0.9rem;
+  }
+
+  .event-details h2 {
+    font-size: 2.5rem;
+  }
+  
+  .event-details p {
+    font-size: 0.8rem;
+  }
+
+  .event-details p br {
+    display: none;
+  }
+
+  .event-details p {
+    margin-bottom: 5px;
+  }
+
+  .ticket-cover {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .ticket-cover div {
+    width: 100%;
+  }
+
+  .ticket-cover div h4 {
+    font-size: 1.2rem;
+  }
+  
+  .ticket-cover div h5 {
+    font-size: 0.8rem;
+  }
+  
+  .ticket-cover div p {
+    font-size: 0.7rem;
+  }
+
+  .select-ticket h3,
+  .tickets-amount h3 {
+    font-size: 0.8rem;
+  }
+
+  .image-upload-section h3 {
+    font-size: 0.8rem;
+  }
+
+  .upload-container {
+    width: 100%;
+    height: 100%;
+  }
+
+  .error {
+    margin-top: 12px;
+    bottom: -12%;
+    font-size: 0.65rem;
+  }
+
+  .error-two {
+    margin-bottom: 5px;
+    bottom: -5%;
+  }
+
+  .attendee-detail form input,
+  .attendee-detail form textarea {
+    margin-bottom: 20px;
+  }
+
+  .ticket-booked h2 {
+    font-size: 1.7rem;
+  }
+  
+  .ticket-booked h4 {
+    font-size: 0.9rem;
+  }
+
+  .ticket-details {
+    width: 230px;
+    height: 416px;
+    top: 40px;
+  }
+
+  .button-component button {
+    font-size: 0.7rem;
+  }
+
+  .main-details {
+    max-height: 150px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .event-details h2 {
+    font-size: 2rem;
+  }
+  
+  .event-details p {
+    font-size: 0.7rem;
+  }
+}
+
+@media only screen and (max-width: 330px) {
+  .ticket-details {
+    width: 180px;
+    height: 330px;
+    top: 90px;
+  }
+  
+  .ticket-event-details {
+    margin-top: -30%;
+  }
+  
+  .ticket-event-details h2 {
+    font-size: 1.2rem;
+  }
+  
+  .ticket-event-details p {
+    font-size: 0.55rem;
+  }
+  
+  .img-container {
+    width: 100px;
+    height: 100px;
+    min-width: 100px;
+    min-height: 100px;
+  }
+  
+  .main-details h5 {
+    font-size: 0.6rem;
+  }
+  
+  .main-details p {
+    font-size: 0.4rem;
+  }
+  
+  .last-last {
+    display: block !important;
+    text-align: left;
+    height: 45px;
+  }
+  
+  .bar-code {
+    position: absolute;
+    bottom: 80px;
+    width: 180px;
+  }
 }

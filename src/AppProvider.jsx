@@ -1,4 +1,4 @@
-import React, { createContext, useRef, useState } from 'react';
+import React, { createContext, useRef, useState, useEffect } from 'react';
 import './App.css'
 
 export const AppContext = createContext();
@@ -7,10 +7,12 @@ export function AppProvider ({ children }) {
     const [ticketSelection, setTicketSelection] = useState(true);
     const [attendee, setAttendee] = useState(false);
     const [ready, setReady] = useState(false);
-    const [imageUrl, setImageUrl] = useState("");
+    const [imageUrl, setImageUrl] = useState(localStorage.getItem("imageUrl") || "");
     const [constant, setConstant] = useState("Ticket Selection");
     const [percent, setPercent] = useState("");
     const [step, setStep] = useState("1");
+    const [imageError, setImageError] = useState("");
+    const [uploaded, setUploaded] = useState(false);
     const [selectedTicketType, setSelectedTicketType] = useState();
     const [ticketConfirmation, setTicketConfirmation] = useState(false);
     const [selectedAmount, setSelectedAmount] = useState(1)
@@ -50,6 +52,24 @@ export function AppProvider ({ children }) {
     
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+    useEffect(() => {
+        if (inputRef.name.current) {
+        inputRef.name.current.value = localStorage.getItem("name") || "";
+        }
+        if (inputRef.email.current) {
+        inputRef.email.current.value = localStorage.getItem("email") || "";
+        }
+    }, []);
+
+    useEffect(() => {
+        if (inputRef.name.current) {
+        localStorage.setItem("name", inputRef.name.current.value);
+        }
+        if (inputRef.email.current) {
+        localStorage.setItem("email", inputRef.email.current.value);
+        }
+    }, [error]);
+
     const firstButton = () => {
         if (!amountConfirmation && !ticketConfirmation) {
             return
@@ -85,6 +105,10 @@ export function AppProvider ({ children }) {
           errors.emailErrorText = "Common, let it be a valid e-mail address";
         }
 
+        if (!uploaded) {
+            setImageError("Please upload fine picture oo")
+        }
+
         setError((prevError) =>({
             ...prevError,
             ...errors
@@ -93,11 +117,13 @@ export function AppProvider ({ children }) {
         if (
             (inputRef.name.current.value.trim() === '') || 
             (inputRef.email.current.value.trim() === '')  || 
-            (!emailRegex.test(inputRef.email.current.value)) 
+            (!emailRegex.test(inputRef.email.current.value)) ||
+            (!uploaded)
         ) {
             return;
         }
 
+        localStorage.setItem("imageUrl", imageUrl);
         setTicketSelection(false);
         setAttendee(false);
         setReady(true);
@@ -113,6 +139,12 @@ export function AppProvider ({ children }) {
         setConstant("Ticket Selection");
         setPercent("");
         setStep("1");
+        setImageUrl('');
+        setSelectedTicketType("");
+        setSelectedAmount("");
+        setUploaded(false);
+        setTicketConfirmation(false);
+        setAmountConfirmation(false);
     }
 
     return (
@@ -140,6 +172,10 @@ export function AppProvider ({ children }) {
             error,
             imageUrl, 
             setImageUrl,
+            uploaded, 
+            setUploaded,
+            imageError, 
+            setImageError,
         }}>
             {children}
         </AppContext.Provider>
