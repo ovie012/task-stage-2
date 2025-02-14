@@ -583,7 +583,9 @@ a.active {
 
 .bar-code {
   position: absolute;
-  bottom: 20px;
+  bottom: 7%;
+  left: 15%;
+  width: 60%;
 }
 
 .bar-code img {
