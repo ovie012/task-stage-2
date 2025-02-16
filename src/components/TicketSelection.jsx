@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { AppContext } from '../AppProvider';
 
 function TicketSelection() {
-  const { firstButton, ticketsType, ticketNumber, setSelectedTicketType, setSelectedAmount, setAmountConfirmation, setTicketConfirmation, selectedTicketType } = useContext(AppContext);
+  const { firstButton, ticketsType, picked, ticketNumber, setSelectedTicketType, setPicked, setSelectedAmount, setAmountConfirmation, setTicketConfirmation, selectedTicketType } = useContext(AppContext);
 
   return (
     <>
@@ -17,13 +17,14 @@ function TicketSelection() {
               <h3>Select Ticket Type:</h3>
               <div className='ticket-cover'>
                 {ticketsType.map((item, index) => (
-                  <div onClick={() => { setSelectedTicketType(item); setTicketConfirmation(true); }} key={index} className={item.price === selectedTicketType?.price ? 'active' : ''}>
+                  <div onClick={() => { setSelectedTicketType(item); setTicketConfirmation(true); setPicked(true) }} key={index} className={item.price === selectedTicketType?.price ? 'active' : ''}>
                     <h4>{item.price}</h4>
                     <h5>{item.access} Access</h5>
                     <p>{item.amount} / 52</p>
                   </div>
                 ))}
               </div>
+              {!picked && <p className='error-picked roboto'>Joor nau, pick a ticket.</p>}
             </section>
             <section className="tickets-amount">
               <h3>number of tickets</h3>

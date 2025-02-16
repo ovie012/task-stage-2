@@ -3,7 +3,7 @@ import { AppContext } from '../AppProvider';
 import ImageUpload from './ImageUpload';
 
 function AttendeeDetail() {
-  const { secondButton, thirdButton, inputRef, error, setImageUrl } = useContext(AppContext);
+  const { secondButton, thirdButton, inputRef, error, selectedTicketType } = useContext(AppContext);
 
   return (
     <>
@@ -31,7 +31,7 @@ function AttendeeDetail() {
             </form>
             <div className="button-component">
               <button onClick={thirdButton}>Back</button>
-              <button onClick={secondButton}>Get my free ticket</button>
+              <button onClick={secondButton}>Get my {selectedTicketType.type} ticket</button>
             </div>
         </div>
     </>

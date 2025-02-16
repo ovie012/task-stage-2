@@ -228,6 +228,7 @@ a.active {
 
 .select-ticket {
   margin-bottom: 30px;
+  position: relative;
 }
 
 .select-ticket h3,
@@ -371,6 +372,8 @@ a.active {
   background-color: #093344;
   cursor: pointer;
   transition: 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .dropzone.active,
@@ -417,6 +420,11 @@ a.active {
   width: 100%;
   height: 100%;
   border-radius: 10px;
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 .attendee-detail form {
@@ -589,6 +597,15 @@ a.active {
 .bar-code img {
   width: 100%;
   height: 100%;
+}
+
+.error-picked {
+  color: #ff2828;
+  position: absolute;
+  bottom: -10%;
+  left: 5px;
+  text-align: center;
+  font-size: 0.8rem;
 }
 
 @media only screen and (max-width: 500px) {

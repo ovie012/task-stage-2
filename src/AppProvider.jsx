@@ -7,6 +7,7 @@ export function AppProvider ({ children }) {
     const [ticketSelection, setTicketSelection] = useState(true);
     const [attendee, setAttendee] = useState(false);
     const [ready, setReady] = useState(false);
+    const [picked, setPicked] = useState(true);
     const [imageUrl, setImageUrl] = useState(localStorage.getItem("imageUrl") || "");
     const [constant, setConstant] = useState("Ticket Selection");
     const [percent, setPercent] = useState("");
@@ -35,16 +36,19 @@ export function AppProvider ({ children }) {
             price : 'Free',
             access : 'Regular',
             amount : '20',
+            type : 'Free'
         },
         {
             price : '$150',
             access : 'VIP',
             amount : '20',
+            type : 'VIP'
         },
         {
             price : '$250',
             access : 'VVIP',
             amount : '20',
+            type : 'VVIP'
         },
     ]
 
@@ -72,10 +76,12 @@ export function AppProvider ({ children }) {
 
     const firstButton = () => {
         if (!amountConfirmation && !ticketConfirmation) {
+            setPicked(false);
             return
         }
 
         setTicketSelection(false);
+        setPicked(true);
         setAttendee(true);
         setReady(false);
         setConstant("Attendee Details");
@@ -130,6 +136,7 @@ export function AppProvider ({ children }) {
         setConstant("Ready");
         setPercent("final");
         setStep("3");
+        // setPicked(false);
     }
 
     const thirdButton = () => {
@@ -145,6 +152,7 @@ export function AppProvider ({ children }) {
         setUploaded(false);
         setTicketConfirmation(false);
         setAmountConfirmation(false);
+        // setPicked(false);
     }
 
     return (
@@ -176,6 +184,8 @@ export function AppProvider ({ children }) {
             setUploaded,
             imageError, 
             setImageError,
+            picked,
+            setPicked,
         }}>
             {children}
         </AppContext.Provider>
