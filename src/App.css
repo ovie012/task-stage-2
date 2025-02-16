@@ -583,9 +583,7 @@ a.active {
 
 .bar-code {
   position: absolute;
-  bottom: 7%;
-  left: 20%;
-  width: 60%;
+  bottom: 15px;
 }
 
 .bar-code img {
@@ -693,6 +691,22 @@ a.active {
 
   .main-details {
     max-height: 150px;
+  }
+
+  .bar-code {
+    position: absolute;
+    bottom: 7%;
+    left: 20%;
+    width: 60%;
+  }
+
+  .button-component {
+    flex-direction: column;
+  }
+
+  .button-component button {
+    width: 100%;
+    margin-bottom: 15px;
   }
 }
 
